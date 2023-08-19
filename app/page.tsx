@@ -114,7 +114,7 @@ export default function Home() {
         <HighlightRender codeBlock={codeBlock2} className='w-full p-4' />
       </div>
 
-      <Label className='text-base self-start'>With a default value:</Label>
+      <Label className='text-base self-start text-muted-foreground'>With a default value:</Label>
 
       <div className='flex flex-row gap-4 w-full'>
         <MarkdownLexical className='w-full' defaultMarkdownValue={"Hello **all**"}>

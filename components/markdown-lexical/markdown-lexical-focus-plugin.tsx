@@ -12,7 +12,7 @@ const LowPriority = 1;
  */
 export function FocusPlugin({ focus, onFocus, onBlur }: { focus?: boolean; onFocus?: () => void; onBlur?: () => void }) {
   const [editor] = useLexicalComposerContext();
-  const [hasFocus, setHasFocus] = useState(() => (isServer ? false : editor.getRootElement() === document.activeElement));
+  const [hasFocus, setHasFocus] = useState(focus ?? false);
 
   useLayoutEffect(() => {
     setHasFocus(editor.getRootElement() === document.activeElement);

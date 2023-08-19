@@ -66,7 +66,7 @@ const PlaceHolder = ({ text = 'Enter some Text' }: { text?: string }) => {
 };
 
 /**
- * Create a simple (well I thought it should have been pretty simple to implement... at the beginning) Markdown WYSIWYG editor, based on Lexical sdk
+ * Create a simple Markdown WYSIWYG editor, based on Lexical sdk
  */
 const MarkdownLexical = forwardRef<HTMLInputElement, MarkdownLexicalProps>(({ className, children, ...props }, ref) => {
   const editorStateRef = useRef<EditorState>();
