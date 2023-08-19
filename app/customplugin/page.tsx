@@ -52,7 +52,7 @@ export default function ServerActions() {
     return (
         <>
             <p className='leading-7 self-start'>
-                You can create your own custom plugins easily. For example, let's create a plugin to add voice recognition to your editor.
+                You can create your own custom plugins easily. For example, let&apos;s create a plugin to add voice recognition to your editor.
             </p>
             <Separator className="my-4" />
             <Label className='text-xl self-start font-extrabold'>Example</Label>

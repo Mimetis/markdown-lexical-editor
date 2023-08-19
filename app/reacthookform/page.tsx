@@ -42,7 +42,7 @@ export default function ReactHookForm() {
         <Separator className="my-4" />
         <Label className='text-xl self-start font-extrabold'>Example</Label>
         <Label className='text-base self-start text-muted-foreground'>
-            In this example, the <code className="relative rounded bg-muted px-[0.5rem] py-[0.4rem] font-mono text-sm">MarkdownLexical</code> value is required to validate the form. Check the error validation by clicking the submit button without any text in the editor and see how it's handled by default.
+            In this example, the <code className="relative rounded bg-muted px-[0.5rem] py-[0.4rem] font-mono text-sm">MarkdownLexical</code> value is required to validate the form. Check the error validation by clicking the submit button without any text in the editor and see how it&apos;s handled by default.
         </Label>
 
         <MarkdownLexicalForm />

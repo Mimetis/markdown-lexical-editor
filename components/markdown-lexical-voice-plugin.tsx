@@ -58,7 +58,7 @@ export function MarkdownLexicalVoicePlugin() {
                             <Mic size={40} className="cursor-pointer" />
                         </Button>
                     </div>
-                    <Label className='text-sm text-muted-foreground' >(Ok.. for the demo, just add some text here and hit "Submit" to add it to your editor ...)</Label>
+                    <Label className='text-sm text-muted-foreground' >(Ok.. for the demo, just add some text here and hit &apos;Submit&apos; to add it to your editor ...)</Label>
                     <Input className='w-full' value={synopsisText} onChange={(e) => setSynopsisText(e.target.value)} />
                     <DialogFooter>
                         <Button onClick={onSubmit}>
