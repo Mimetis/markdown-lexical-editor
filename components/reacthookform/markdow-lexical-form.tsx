@@ -1,10 +1,9 @@
 "use client";
 
-import { MarkdownLexical } from "../markdown-lexical/markdown-lexical";
+import { MarkdownLexical, MarkdownLexicalFormatTextPlugin } from "../ui/markdown-lexical";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
-import { MarkdownLexicalFormatTextPlugin } from "../markdown-lexical/markdown-lexical-format-text-plugin";
 
 type Inputs = {
     markdownRequired: string

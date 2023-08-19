@@ -1,8 +1,6 @@
 import { HighlightRender } from '@/components/highlight-renderer'
 import { MarkdownLexicalVoicePlugin } from '@/components/markdown-lexical-voice-plugin'
-import { MarkdownLexical } from '@/components/markdown-lexical/markdown-lexical'
-import { MarkdownLexicalFormatTextPlugin } from '@/components/markdown-lexical/markdown-lexical-format-text-plugin'
-import { Button } from '@/components/ui/button'
+import { MarkdownLexical } from '@/components/ui/markdown-lexical'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 

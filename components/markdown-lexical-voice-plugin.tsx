@@ -1,20 +1,12 @@
 'use client';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
-import {
-    FORMAT_TEXT_COMMAND,
-    $isRangeSelection,
-    TextFormatType,
-} from 'lexical';
-import { MouseEvent, useEffect, useState } from 'react';
-import { UPDATE_STATE_COMMAND } from './markdown-lexical/markdown-lexical-command';
+import { useState } from 'react';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from './ui/dialog';
 import { Button } from './ui/button';
 import { Mic } from 'lucide-react';
 import { Label } from './ui/label';
 import { Input } from './ui/input';
 import { $createParagraphNode, $createTextNode, $getRoot } from 'lexical';
-
-const LowPriority = 1;
 
 /**
  * Create a toolbar button for bold 
