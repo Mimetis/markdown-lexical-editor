@@ -4,8 +4,11 @@ import { MarkdownLexicalFormatTextPlugin } from '@/components/markdown-lexical/m
 import { MarkdownLexicalListPlugin } from '@/components/markdown-lexical/markdown-lexical-list-plugin'
 import { MarkdownLexicalQuotePlugin } from '@/components/markdown-lexical/markdown-lexical-quote-plugin'
 import { MarkdownLexicalUndoRedoPlugin } from '@/components/markdown-lexical/markdown-lexical-undo-redo-plugin'
-import { ModeToggle } from '@/components/toggle-theme'
+import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
+import { Separator } from '@/components/ui/separator'
+import { BoldIcon, ExternalLink, ItalicIcon, ListIcon, ListOrderedIcon, Redo, Redo2, StrikethroughIcon, UnderlineIcon, Undo } from 'lucide-react'
+import Link from 'next/link'
 import React from 'react'
 
 
@@ -29,11 +32,67 @@ const codeBlock3 = `<MarkdownLexical className='w-full'
 export default function Home() {
   return (
     <>
-      <Label className='text-2xl'>Markdown WYSIWYG editor using lexical and shadcn/ui</Label>
-      <Label className='text-lg self-start'>Add your Markdown WYSIWYG editor with formating options you need</Label>
-      
-      <Label className='text-base self-start'># Examples</Label>
-      <Label className='text-base self-start'>Adding options to format text, undo redo, quote and lists:</Label>
+      <p className='leading-7 self-start'>Add a
+        <code className="relative rounded bg-muted px-[0.5rem] py-[0.4rem] font-mono text-sm">MarkdownLexical</code>
+        component to your <span className='font-bold'>REACT</span> application, then choose existing options like:
+      </p>
+      <div className='self-start ml-8'>
+        <div className='list-disc'>
+          <div className='list-item'>
+            <code className="relative rounded bg-muted px-[0.5rem] py-[0.4rem] font-mono text-sm">MarkdownLexicalFormatTextPlugin</code> to add
+            <Button variant={'outline'} disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
+              <BoldIcon className="w-3 h-3" strokeWidth='2px' />
+            </Button> (bold)
+            /
+            <Button variant={'outline'} disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
+              <ItalicIcon className="w-3 h-3" strokeWidth='2px' />
+            </Button> (italic)
+            /
+            <Button variant={'outline'} disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
+              <UnderlineIcon className="w-3 h-3" strokeWidth='2px' />
+            </Button> (underline)
+            and
+            <Button variant={'outline'} disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
+              <StrikethroughIcon className="w-3 h-3" strokeWidth='2px' />
+            </Button> (Strikethrough)
+            options to your editor.
+          </div>
+          <div className='list-item'>
+            <code className="relative rounded bg-muted px-[0.5rem] py-[0.4rem] font-mono text-sm">MarkdownLexicalUndoRedoPlugin</code> to add
+            <Button variant={'outline'} disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
+              <Undo className="w-3 h-3" strokeWidth='2px' />
+            </Button> (undo)
+            /
+            and
+            <Button variant={'outline'} disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
+              <Redo className="w-3 h-3" strokeWidth='2px' />
+            </Button> (redo)
+            options to your editor.
+          </div>
+          <div className='list-item'>
+            <code className="relative rounded bg-muted px-[0.5rem] py-[0.4rem] font-mono text-sm">MarkdownLexicalListPlugin</code> to add
+            <Button variant={'outline'} disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
+              <ListOrderedIcon className="w-3 h-3" strokeWidth='2px' />
+            </Button>
+            and
+            <Button variant={'outline'} disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
+              <ListIcon className="w-3 h-3" strokeWidth='2px' />
+            </Button> list options to your editor.
+          </div>
+          <div className='list-item'>
+            And even more like <code className="relative rounded bg-muted px-[0.5rem] py-[0.4rem] font-mono text-sm">MarkdownLexicalQuotePlugin</code>,
+            <code className="relative rounded bg-muted px-[0.5rem] py-[0.4rem] font-mono text-sm">MarkdownLexicalLinkPlugin</code>.
+          </div>
+          <div className='list-item'>
+            Or create your own <Link href={'./customplugin'} className='m-1 underline inline-flex items-center gap-2'>plugin
+              <ExternalLink className="w-3 h-3 " strokeWidth='2px' />
+            </Link> to add to your <code className="relative rounded bg-muted px-[0.5rem] py-[0.4rem] font-mono text-sm">MarkdownLexical</code> editor component.
+          </div>
+        </div>
+      </div>
+      <Separator className="my-4" />
+      <Label className='text-xl self-start font-extrabold'>Examples</Label>
+      <Label className='text-base self-start text-muted-foreground'>Adding options to format text, undo redo, quote and lists:</Label>
       <div className='flex flex-row gap-4 w-full'>
         <MarkdownLexical className='w-full'>
           <MarkdownLexicalUndoRedoPlugin />
@@ -45,7 +104,7 @@ export default function Home() {
         <HighlightRender codeBlock={codeBlock1} className='w-full p-4' />
       </div>
 
-      <Label className='text-base self-start'>Adding only format text option:</Label>
+      <Label className='text-base self-start text-muted-foreground'>Adding only format text option:</Label>
 
       <div className='flex flex-row gap-4 w-full'>
         <MarkdownLexical className='w-full'>

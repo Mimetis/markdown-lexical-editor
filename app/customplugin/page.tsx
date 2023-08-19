@@ -4,6 +4,7 @@ import { MarkdownLexical } from '@/components/markdown-lexical/markdown-lexical'
 import { MarkdownLexicalFormatTextPlugin } from '@/components/markdown-lexical/markdown-lexical-format-text-plugin'
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
+import { Separator } from '@/components/ui/separator'
 
 
 const codeBlock = `const MarkdownLexicalVoicePlugin = () => {
@@ -24,30 +25,22 @@ const codeBlock = `const MarkdownLexicalVoicePlugin = () => {
     });
 
     return (
-        <>
-            <Dialog open={open} onOpenChange={setOpen}>
-                <Button onClick={() => setOpen(true)} 
-                  className="!rounded-[4px] p-0 w-7 h-7 md:w-9 md:h-9">
-                    <Mic className="w-4 h-4 md:w-5 md:h-5" />
-                </Button>
-                <DialogContent>
-                    ....
-                    ....
-                    ....
-                    <DialogFooter>
-                        <Button onClick={onSubmit}>Submit</Button>
-                    </DialogFooter>
-                </DialogContent>
-            </Dialog>
-        </>
-    );
-
+    <Dialog open={open} onOpenChange={setOpen}>
+        <Button onClick={() => setOpen(true)} className="!rounded-[4px] p-0 w-7 h-7">
+            <Mic className="w-4 h-4" />
+        </Button>
+        <DialogContent>
+            ....
+            <DialogFooter>
+                <Button onClick={onSubmit}>Submit</Button>
+            </DialogFooter>
+        </DialogContent>
+    </Dialog>);
+}
 
 <MarkdownLexical name="markdown" className='w-full'>
     <MarkdownLexicalVoicePlugin />
-</MarkdownLexical>
-
-}`
+</MarkdownLexical>`
 
 export default function ServerActions() {
 
@@ -58,11 +51,17 @@ export default function ServerActions() {
 
     return (
         <>
-            <Label className='text-2xl'>Markdown WYSIWYG editor using lexical and shadcn/ui</Label>
-            <Label className='text-lg self-start'>Add your Markdown WYSIWYG editor with formating options you need</Label>
-
-            <Label className='text-base self-start'># Examples</Label>
-            <Label className='text-base self-start'>Creating your own plugin</Label>
+            <p className='leading-7 self-start'>
+                You can create your own custom plugins easily. For example, let's create a plugin to add voice recognition to your editor.
+            </p>
+            <Separator className="my-4" />
+            <Label className='text-xl self-start font-extrabold'>Example</Label>
+            <Label className='text-base self-start text-muted-foreground'>
+                In this example, the <code className="relative rounded bg-muted px-[0.5rem] py-[0.4rem] font-mono text-sm">MarkdownLexicalVoicePlugin</code> opens a dialog panel to let the user speaks and then add the speech to text result to the editor.
+            </Label>
+            <Label className='text-base self-start text-muted-foreground'>
+                (This example does not work and you will need to add the text in the input text area before submit and see the result)
+            </Label>
 
             <MarkdownLexical name="markdown" className='w-full'>
                 <MarkdownLexicalVoicePlugin />

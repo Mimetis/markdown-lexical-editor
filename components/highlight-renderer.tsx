@@ -14,7 +14,7 @@ const HighlightRender = forwardRef<HTMLInputElement, HighlightProps>(({ classNam
     return (
         <Highlight
             {...props}
-            theme={theme === "light" ? themes.vsLight : themes.vsDark}
+            theme={theme === "light" ? themes.github : themes.vsDark}
             code={codeBlock}
             language="tsx">
             {({ style, tokens, getLineProps, getTokenProps }) => (

@@ -111,7 +111,7 @@ const MarkdownLexical = forwardRef<HTMLInputElement, MarkdownLexicalProps>(({ cl
         </MarkdownLexicalToolbar>
         <div
           className={cn(
-            'relative border border-input bg-accent/30 dark:bg-accent/20 rounded-sm cursor-text min-h-[150px] max-h-[350px] h-auto w-full overflow-y-auto',
+            'relative border border-input bg-accent/30 dark:bg-accent/80 rounded-sm cursor-text min-h-[150px] max-h-[350px] h-auto w-full overflow-y-auto',
             props.textAreaClassName
           )}
         >
