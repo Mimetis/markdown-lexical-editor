@@ -121,7 +121,7 @@ const MarkdownLexical = forwardRef<HTMLInputElement, MarkdownLexicalProps>(({ cl
             ErrorBoundary={LexicalErrorBoundary}
           />
           <ListPlugin />
-          <FocusPlugin onBlur={onBlur} onFocus={onFocus} focus={hasFocus} />
+          {/* <FocusPlugin onBlur={onBlur} onFocus={onFocus} focus={hasFocus} /> */}
           <OnChangePlugin onChange={onChange} />
           <HistoryPlugin />
           <MarkdownShortcutPlugin transformers={TRANSFORMERS} />

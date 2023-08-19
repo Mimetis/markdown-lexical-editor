@@ -2,19 +2,19 @@
 
 import { Highlight, themes } from "prism-react-renderer";
 import { ComponentPropsWithoutRef, forwardRef } from "react";
-import { useTheme } from 'next-themes';
+// import { useTheme } from 'next-themes';
 
 export interface HighlightProps extends ComponentPropsWithoutRef<'input'> {
     codeBlock: string;
 }
 
 const HighlightRender = forwardRef<HTMLInputElement, HighlightProps>(({ className, children, codeBlock, ...props }, ref) => {
-    const { theme } = useTheme();
+    // const { theme } = useTheme();
 
     return (
         <Highlight
             {...props}
-            theme={theme === "light" ? themes.github : themes.vsDark}
+            theme={themes.vsDark}
             code={codeBlock}
             language="tsx">
             {({ style, tokens, getLineProps, getTokenProps }) => (
