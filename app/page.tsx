@@ -28,11 +28,11 @@ const codeBlock3 = `<MarkdownLexical className='w-full'
 export default function Home() {
   return (
     <>
-      <p className='leading-7 self-start'>Add a
+      <p className='md:leading-7 self-start'>Add a
         <code className="relative rounded bg-muted px-[0.5rem] py-[0.4rem] font-mono text-sm">MarkdownLexical</code>
-        component to your <span className='font-bold'>REACT</span> application, then choose existing options like:
+        component to your <span className='font-bold'>REACT</span> application, then choose your options.
       </p>
-      <div className='self-start ml-8'>
+      <div className='hidden sm:block self-start ml-6 mr-1'>
         <div className='list-disc'>
           <div className='list-item'>
             <code className="relative rounded bg-muted px-[0.5rem] py-[0.4rem] font-mono text-sm">MarkdownLexicalFormatTextPlugin</code> to add
@@ -89,7 +89,7 @@ export default function Home() {
       <Separator className="my-4" />
       <Label className='text-xl self-start font-extrabold'>Examples</Label>
       <Label className='text-base self-start text-muted-foreground'>Adding options to format text, undo redo, quote and lists:</Label>
-      <div className='flex flex-row gap-4 w-full'>
+      <div className='flex flex-col md:flex-row gap-4 w-full'>
         <MarkdownLexical className='w-full'>
           <MarkdownLexicalUndoRedoPlugin />
           <MarkdownLexicalFormatTextPlugin />
@@ -102,7 +102,7 @@ export default function Home() {
 
       <Label className='text-base self-start text-muted-foreground'>Adding only format text option:</Label>
 
-      <div className='flex flex-row gap-4 w-full'>
+      <div className='flex flex-col md:flex-row gap-4 w-full'>
         <MarkdownLexical className='w-full'>
           <MarkdownLexicalFormatTextPlugin />
         </MarkdownLexical>
@@ -112,7 +112,7 @@ export default function Home() {
 
       <Label className='text-base self-start text-muted-foreground'>With a default value:</Label>
 
-      <div className='flex flex-row gap-4 w-full'>
+      <div className='flex flex-col md:flex-row gap-4 w-full'>
         <MarkdownLexical className='w-full' defaultMarkdownValue={"Hello **all**"}>
           <MarkdownLexicalFormatTextPlugin />
         </MarkdownLexical>
