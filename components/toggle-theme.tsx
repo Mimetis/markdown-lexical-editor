@@ -20,12 +20,16 @@ export function ModeToggle() {
 
   return (
     <>
-      <Link href={'https://github.com/Mimetis/markdown-lexical-editor'}
+      <Link
+        title="github repository"
+        href={'https://github.com/Mimetis/markdown-lexical-editor'}
         className={cn(buttonVariants({variant:'outline'}))}>
         <Github className="h-[1.2rem] w-[1.2rem]" />
       </Link>
 
-      <Link href={'https://www.twitter.com/sebpertus'}
+      <Link
+        title='seb pertus twitter'
+        href={'https://www.twitter.com/sebpertus'}
         className={cn(buttonVariants({variant:'outline'}))}>
         <Twitter className="h-[1.2rem] w-[1.2rem]" />
       </Link>

@@ -126,7 +126,7 @@ const MarkdownLexical = forwardRef<HTMLInputElement, MarkdownLexicalProps>(({ cl
     <LexicalComposer initialConfig={initialConfig} key={id}>
       <div className={cn('grid grid-cols-1 gap-1', className)} suppressHydrationWarning={true}>
         {/* Using this input to be able to launch a focus from anywhere on the page, and storing value for any form validation */}
-        <input ref={ref} type="text" readOnly name={props.name} id={props.id} onFocus={(e) => onFocus()} className="w-0 h-0" value={markdown} />
+        <input ref={ref} type="hidden" readOnly name={props.name} id={props.id} onFocus={(e) => onFocus()} className="w-0 h-0" value={markdown} />
         {/* toolbar */}
         <MarkdownLexicalToolbar>
           {children}
@@ -139,7 +139,7 @@ const MarkdownLexical = forwardRef<HTMLInputElement, MarkdownLexicalProps>(({ cl
           suppressHydrationWarning={true}
         >
           <RichTextPlugin
-            contentEditable={<ContentEditable content='' className={cn('h-full resize-none text-sm caret-zinc-700 relative outline-0 p-2')} />}
+            contentEditable={<ContentEditable title='editable content' className={cn('h-full resize-none text-sm caret-zinc-700 relative outline-0 p-2')} />}
             placeholder={props.defaultMarkdownValue ? <></> : <PlaceHolder text={props.placeholder} />}
             ErrorBoundary={LexicalErrorBoundary}
           />

@@ -35,6 +35,7 @@ export default function RootLayout({
                   <div className='flex flex-row flex-1 justify-end gap-4 p-3 flex-nowrap'>
 
                     <Link
+                      title='Home'
                       key="home"
                       href="/"
                       className='flex items-center font-medium transition-colors hover:text-foreground/80 text-foreground' >
@@ -42,6 +43,7 @@ export default function RootLayout({
                     </Link>
                     <Separator orientation="vertical"  />
                     <Link
+                      title='Server Actions'
                       key="serveractions"
                       href="/serveractions"
                       className='flex items-center font-medium transition-colors hover:text-foreground/80 text-foreground' >
@@ -49,6 +51,7 @@ export default function RootLayout({
                     </Link>
                     <Separator orientation="vertical"  />
                     <Link
+                      title='React Hook Form'
                       key="react-hook"
                       href="/reacthookform"
                       className='flex items-center font-medium transition-colors hover:text-foreground/80 text-foreground' >
@@ -56,6 +59,7 @@ export default function RootLayout({
                     </Link>
                     <Separator orientation="vertical" />
                     <Link
+                      title='Custom Plugin'
                       key="customplugin"
                       href="/customplugin"
                       className='flex items-center font-medium transition-colors hover:text-foreground/80 text-foreground' >
@@ -77,11 +81,11 @@ export default function RootLayout({
               <h1 className='self-start text-2xl sm:text-3xl md:text-5xl lg:leading-[1.1] font-bold leading-tight tracking-tighter '>Markdown WYSIWYG Editor</h1>
               <Label className='max-w-[750px] text-base md:text-lg text-muted-foreground sm:text-xl self-start'>
                 Add and customize a Markdown WYSIWYG editor in your React application. Uses
-                <Link href={'https://ui.shadcn.com/'} className='m-1 underline inline-flex items-center gap-2'>shadcn/ui
+                <Link href={'https://ui.shadcn.com/'} title='shadcn ui' className='m-1 underline inline-flex items-center gap-2'>shadcn/ui
                   <ExternalLink className="w-3 h-3 " strokeWidth='2px' />
                 </Link>
                 library and
-                <Link href={'https://lexical.dev/'} className='m-1 underline inline-flex items-center gap-2'>lexical editor
+                <Link href={'https://lexical.dev/'} title='lexical' className='m-1 underline inline-flex items-center gap-2'>lexical editor
                   <ExternalLink className="w-3 h-3 " strokeWidth='2px' />
                 </Link>
                 framework.
