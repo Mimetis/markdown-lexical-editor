@@ -96,7 +96,13 @@ const MarkdownLexical = forwardRef<HTMLInputElement, MarkdownLexicalProps>(({ cl
     theme: tailwindTheme,
     onError: (e: any) => console.log(e),
     nodes: [ListNode, ListItemNode, QuoteNode, CodeNode, HeadingNode, LinkNode],
-    // editorState: () => (props.defaultMarkdownValue ? $convertFromMarkdownString(props.defaultMarkdownValue, TRANSFORMERS) : ''),
+    editorState: (editor: LexicalEditor) => {
+      editor.update(() => {
+        if (props.defaultMarkdownValue) {
+          $convertFromMarkdownString(props.defaultMarkdownValue, TRANSFORMERS)
+        }
+      });
+    },
   };
 
   // when editor changes, you can get notified via the LexicalOnChangePlugin
@@ -118,7 +124,7 @@ const MarkdownLexical = forwardRef<HTMLInputElement, MarkdownLexicalProps>(({ cl
 
   return (
     <LexicalComposer initialConfig={initialConfig} key={id}>
-      <div className={cn('grid grid-cols-1 gap-1', className)}>
+      <div className={cn('grid grid-cols-1 gap-1', className)} suppressHydrationWarning={true}>
         {/* Using this input to be able to launch a focus from anywhere on the page, and storing value for any form validation */}
         <input ref={ref} type="text" readOnly name={props.name} id={props.id} onFocus={(e) => onFocus()} className="w-0 h-0" value={markdown} />
         {/* toolbar */}
@@ -130,13 +136,14 @@ const MarkdownLexical = forwardRef<HTMLInputElement, MarkdownLexicalProps>(({ cl
             'relative border border-input bg-accent/30 dark:bg-accent/80 rounded-sm cursor-text min-h-[150px] max-h-[350px] h-auto w-full overflow-y-auto',
             props.textAreaClassName
           )}
+          suppressHydrationWarning={true}
         >
           <RichTextPlugin
             contentEditable={<ContentEditable content='' className={cn('h-full resize-none text-sm caret-zinc-700 relative outline-0 p-2')} />}
-            placeholder={<PlaceHolder text={props.placeholder} />}
+            placeholder={props.defaultMarkdownValue ? <></> : <PlaceHolder text={props.placeholder} />}
             ErrorBoundary={LexicalErrorBoundary}
           />
-          <InitialValuePlugin initialValue={props.defaultMarkdownValue || ''} />
+          {/* <InitialValuePlugin initialValue={props.defaultMarkdownValue || ''} /> */}
           <ListPlugin />
           <FocusPlugin onBlur={onBlur} onFocus={onFocus} focus={hasFocus} />
           <OnChangePlugin onChange={onChange} />

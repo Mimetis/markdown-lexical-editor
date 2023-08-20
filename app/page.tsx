@@ -36,42 +36,42 @@ export default function Home() {
         <div className='list-disc'>
           <div className='list-item'>
             <code className="relative rounded bg-muted px-[0.5rem] py-[0.4rem] font-mono text-sm">MarkdownLexicalFormatTextPlugin</code> to add
-            <Button variant={'outline'} disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
+            <Button variant={'outline'} title='bold' disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
               <BoldIcon className="w-3 h-3" strokeWidth='2px' />
             </Button> (bold)
             /
-            <Button variant={'outline'} disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
+            <Button variant={'outline'} title='italic' disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
               <ItalicIcon className="w-3 h-3" strokeWidth='2px' />
             </Button> (italic)
             /
-            <Button variant={'outline'} disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
+            <Button variant={'outline'} title='underline' disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
               <UnderlineIcon className="w-3 h-3" strokeWidth='2px' />
             </Button> (underline)
             and
-            <Button variant={'outline'} disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
+            <Button variant={'outline'} title='strikethrough' disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
               <StrikethroughIcon className="w-3 h-3" strokeWidth='2px' />
             </Button> (Strikethrough)
             options to your editor.
           </div>
           <div className='list-item'>
             <code className="relative rounded bg-muted px-[0.5rem] py-[0.4rem] font-mono text-sm">MarkdownLexicalUndoRedoPlugin</code> to add
-            <Button variant={'outline'} disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
+            <Button variant={'outline'} title='undo' disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
               <Undo className="w-3 h-3" strokeWidth='2px' />
             </Button> (undo)
             /
             and
-            <Button variant={'outline'} disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
+            <Button variant={'outline'} title='redo' disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
               <Redo className="w-3 h-3" strokeWidth='2px' />
             </Button> (redo)
             options to your editor.
           </div>
           <div className='list-item'>
             <code className="relative rounded bg-muted px-[0.5rem] py-[0.4rem] font-mono text-sm">MarkdownLexicalListPlugin</code> to add
-            <Button variant={'outline'} disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
+            <Button variant={'outline'} title='list ordered' disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
               <ListOrderedIcon className="w-3 h-3" strokeWidth='2px' />
             </Button>
             and
-            <Button variant={'outline'} disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
+            <Button variant={'outline'} title='list' disabled type='button' className="!rounded-[4px] m-1 p-0 w-6 h-6 disabled:opacity-100">
               <ListIcon className="w-3 h-3" strokeWidth='2px' />
             </Button> list options to your editor.
           </div>
