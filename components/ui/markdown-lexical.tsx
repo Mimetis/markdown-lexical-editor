@@ -22,6 +22,7 @@ import { BoldIcon, ItalicIcon, ListIcon, ListOrderedIcon, QuoteIcon, Redo2, Stri
 import { mergeRegister, $getNearestNodeOfType } from '@lexical/utils';
 import { $wrapNodes } from '@lexical/selection';
 import dynamic from 'next/dynamic';
+import { $createParagraphNode, $createTextNode, $getRoot } from 'lexical';
 
 
 // tailwind theme css for our Lexical markdown textarea
@@ -95,9 +96,8 @@ const MarkdownLexical = forwardRef<HTMLInputElement, MarkdownLexicalProps>(({ cl
     theme: tailwindTheme,
     onError: (e: any) => console.log(e),
     nodes: [ListNode, ListItemNode, QuoteNode, CodeNode, HeadingNode, LinkNode],
-    editorState: () => (props.defaultMarkdownValue ? $convertFromMarkdownString(props.defaultMarkdownValue, TRANSFORMERS) : ''),
+    // editorState: () => (props.defaultMarkdownValue ? $convertFromMarkdownString(props.defaultMarkdownValue, TRANSFORMERS) : ''),
   };
-
 
   // when editor changes, you can get notified via the LexicalOnChangePlugin
   const onChange = (editorState: EditorState, editor: LexicalEditor, tags: Set<string>) => {
@@ -132,10 +132,11 @@ const MarkdownLexical = forwardRef<HTMLInputElement, MarkdownLexicalProps>(({ cl
           )}
         >
           <RichTextPlugin
-            contentEditable={<ContentEditable onChange={(e) => console.log('ContentEditable', e)} className={cn('h-full resize-none text-sm caret-zinc-700 relative outline-0 p-2')} />}
+            contentEditable={<ContentEditable content='' className={cn('h-full resize-none text-sm caret-zinc-700 relative outline-0 p-2')} />}
             placeholder={<PlaceHolder text={props.placeholder} />}
             ErrorBoundary={LexicalErrorBoundary}
           />
+          <InitialValuePlugin initialValue={props.defaultMarkdownValue || ''} />
           <ListPlugin />
           <FocusPlugin onBlur={onBlur} onFocus={onFocus} focus={hasFocus} />
           <OnChangePlugin onChange={onChange} />
@@ -324,15 +325,15 @@ const MarkdownLexicalListPlugin = () => {
   }, [editor]);
 
   return <>
-      <Button variant={'outline'} type='button' aria-label="Format Numbered List" className="!rounded-[4px] p-0 w-7 h-7 md:w-9 md:h-9"
-        onClick={(e) => dispatchCommandHandler(e, editor, blockType !== 'ol' ? INSERT_ORDERED_LIST_COMMAND : REMOVE_LIST_COMMAND)}>
-        <ListOrderedIcon className="w-4 h-4 md:w-5 md:h-5" strokeWidth={isListOrdered ? '3px' : '2px'} />
-      </Button>
-      <Button variant={'outline'} type='button' aria-label="Format Bullet List" className="!rounded-[4px] p-0 w-7 h-7 md:w-9 md:h-9"
-        onClick={(e) => dispatchCommandHandler(e, editor, blockType !== 'ul' ? INSERT_UNORDERED_LIST_COMMAND : REMOVE_LIST_COMMAND)}>
-        <ListIcon className="w-4 h-4 md:w-5 md:h-5" strokeWidth={isListBullet ? '3px' : '2px'} />
-      </Button>
-    </>
+    <Button variant={'outline'} type='button' aria-label="Format Numbered List" className="!rounded-[4px] p-0 w-7 h-7 md:w-9 md:h-9"
+      onClick={(e) => dispatchCommandHandler(e, editor, blockType !== 'ol' ? INSERT_ORDERED_LIST_COMMAND : REMOVE_LIST_COMMAND)}>
+      <ListOrderedIcon className="w-4 h-4 md:w-5 md:h-5" strokeWidth={isListOrdered ? '3px' : '2px'} />
+    </Button>
+    <Button variant={'outline'} type='button' aria-label="Format Bullet List" className="!rounded-[4px] p-0 w-7 h-7 md:w-9 md:h-9"
+      onClick={(e) => dispatchCommandHandler(e, editor, blockType !== 'ul' ? INSERT_UNORDERED_LIST_COMMAND : REMOVE_LIST_COMMAND)}>
+      <ListIcon className="w-4 h-4 md:w-5 md:h-5" strokeWidth={isListBullet ? '3px' : '2px'} />
+    </Button>
+  </>
 }
 
 /**
@@ -362,9 +363,23 @@ const FocusPlugin = ({ focus, onFocus, onBlur }: { focus?: boolean; onFocus?: ()
   return null;
 }
 
-const  MarkdownLexicalNoSSR = (props: MarkdownLexicalProps) => {
-  const MarkdownLexicalNoSSR = dynamic(() => import('@/components/ui/markdown-lexical').then((mod) => mod.MarkdownLexical), { ssr: false });
+const InitialValuePlugin = ({ initialValue }: { initialValue: string }) => {
+  const [editor] = useLexicalComposerContext();
 
+  useEffect(() => {
+    if (initialValue) {
+      editor.update(() => {
+        $convertFromMarkdownString(initialValue ?? '', TRANSFORMERS);
+      });
+    }
+  }, [editor]);
+
+
+  return null;
+}
+
+const MarkdownLexicalNoSSR = (props: MarkdownLexicalProps) => {
+  const MarkdownLexicalNoSSR = dynamic(() => import('@/components/ui/markdown-lexical').then((mod) => mod.MarkdownLexical), { ssr: false });
   return <Fragment>{MarkdownLexicalNoSSR && <MarkdownLexicalNoSSR {...props} />}</Fragment>;
 }
 
