@@ -113,9 +113,9 @@ export default function Home() {
       <Label className='text-base self-start text-muted-foreground'>With a default value:</Label>
 
       <div className='flex flex-col md:flex-row gap-4 w-full'>
-        <MarkdownLexicalNoSSR className='w-full' defaultMarkdownValue={"Hello **all**"}>
+        <MarkdownLexical className='w-full' defaultMarkdownValue={"Hello **all**"}>
           <MarkdownLexicalFormatTextPlugin />
-        </MarkdownLexicalNoSSR>
+        </MarkdownLexical>
 
         <HighlightRender codeBlock={codeBlock3} className='w-full p-4' />
       </div>
