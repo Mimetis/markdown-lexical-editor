@@ -24,9 +24,9 @@ const HighlightRender = forwardRef<HTMLInputElement, HighlightProps>(({ classNam
                     {tokens.map((line, i) => (
                         <div key={i} {...getLineProps({ line })}>
                             {line.map((token, key) => {
-                                const { className, ...tokenProps } = getTokenProps({ token, key });
+                                const { className, akey, ...tokenProps } = getTokenProps({ token, key });
                                     
-                                return <span key={key} className="text-xs md:text-base" {...tokenProps} />
+                                return <span key={key} {...getTokenProps({ token })} />
                             }
                             )}
                         </div>

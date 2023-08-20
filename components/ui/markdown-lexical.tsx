@@ -15,7 +15,7 @@ import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { HeadingNode, QuoteNode, $createQuoteNode, $isHeadingNode } from '@lexical/rich-text';
 import { $getSelection, $isRangeSelection, BLUR_COMMAND, CAN_REDO_COMMAND, CAN_UNDO_COMMAND, EditorState, FOCUS_COMMAND, FORMAT_TEXT_COMMAND, GridSelection, LexicalCommand, LexicalEditor, NodeSelection, REDO_COMMAND, RangeSelection, TextFormatType, UNDO_COMMAND } from 'lexical';
-import { ComponentPropsWithoutRef, MouseEvent, ReactNode, forwardRef, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { ComponentPropsWithoutRef, MouseEvent, ReactNode, forwardRef, useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { Button } from './button';
 import { BoldIcon, ItalicIcon, ListIcon, ListOrderedIcon, QuoteIcon, Redo2, StrikethroughIcon, UnderlineIcon, Undo2 } from 'lucide-react';
@@ -87,6 +87,7 @@ const MarkdownLexical = forwardRef<HTMLInputElement, MarkdownLexicalProps>(({ cl
   const editorStateRef = useRef<EditorState>();
   const [hasFocus, setHasFocus] = useState<boolean>(props.focus || false);
   const [markdown, setMarkdown] = useState<string>(props.defaultMarkdownValue || '');
+  const id = useId();
 
   const initialConfig: InitialConfigType = {
     namespace: 'pg_markdown_editor',
@@ -95,6 +96,7 @@ const MarkdownLexical = forwardRef<HTMLInputElement, MarkdownLexicalProps>(({ cl
     nodes: [ListNode, ListItemNode, QuoteNode, CodeNode, HeadingNode, LinkNode],
     editorState: () => (props.defaultMarkdownValue ? $convertFromMarkdownString(props.defaultMarkdownValue, TRANSFORMERS) : ''),
   };
+  
 
   // when editor changes, you can get notified via the LexicalOnChangePlugin
   const onChange = (editorState: EditorState, editor: LexicalEditor, tags: Set<string>) => {
@@ -114,7 +116,7 @@ const MarkdownLexical = forwardRef<HTMLInputElement, MarkdownLexicalProps>(({ cl
   const onBlur = () => setHasFocus(false);
 
   return (
-    <LexicalComposer initialConfig={initialConfig}>
+    <LexicalComposer initialConfig={initialConfig} key={id}>
       <div className={cn('grid grid-cols-1 gap-1', className)}>
         {/* Using this input to be able to launch a focus from anywhere on the page, and storing value for any form validation */}
         <input ref={ref} type="text" readOnly name={props.name} id={props.id} onFocus={(e) => onFocus()} className="w-0 h-0" value={markdown} />
