@@ -1,7 +1,7 @@
 import { HighlightRender } from '@/components/highlight-renderer'
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
-import { MarkdownLexical, MarkdownLexicalFormatTextPlugin, MarkdownLexicalListPlugin, MarkdownLexicalQuotePlugin, MarkdownLexicalUndoRedoPlugin } from '@/components/ui/markdown-lexical'
+import { MarkdownLexical, MarkdownLexicalFormatTextPlugin, MarkdownLexicalListPlugin, MarkdownLexicalNoSSR, MarkdownLexicalQuotePlugin, MarkdownLexicalUndoRedoPlugin } from '@/components/ui/markdown-lexical'
 import { Separator } from '@/components/ui/separator'
 import { BoldIcon, ExternalLink, ItalicIcon, ListIcon, ListOrderedIcon, Redo, Redo2, StrikethroughIcon, UnderlineIcon, Undo } from 'lucide-react'
 import Link from 'next/link'
@@ -113,9 +113,9 @@ export default function Home() {
       <Label className='text-base self-start text-muted-foreground'>With a default value:</Label>
 
       <div className='flex flex-col md:flex-row gap-4 w-full'>
-        <MarkdownLexical className='w-full' defaultMarkdownValue={"Hello **all**"}>
+        <MarkdownLexicalNoSSR className='w-full' defaultMarkdownValue={"Hello **all**"}>
           <MarkdownLexicalFormatTextPlugin />
-        </MarkdownLexical>
+        </MarkdownLexicalNoSSR>
 
         <HighlightRender codeBlock={codeBlock3} className='w-full p-4' />
       </div>

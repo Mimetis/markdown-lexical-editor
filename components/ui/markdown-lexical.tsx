@@ -15,12 +15,13 @@ import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { HeadingNode, QuoteNode, $createQuoteNode, $isHeadingNode } from '@lexical/rich-text';
 import { $getSelection, $isRangeSelection, BLUR_COMMAND, CAN_REDO_COMMAND, CAN_UNDO_COMMAND, EditorState, FOCUS_COMMAND, FORMAT_TEXT_COMMAND, GridSelection, LexicalCommand, LexicalEditor, NodeSelection, REDO_COMMAND, RangeSelection, TextFormatType, UNDO_COMMAND } from 'lexical';
-import { ComponentPropsWithoutRef, MouseEvent, ReactNode, forwardRef, useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
+import { ComponentPropsWithoutRef, Fragment, MouseEvent, ReactNode, forwardRef, useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { Button } from './button';
 import { BoldIcon, ItalicIcon, ListIcon, ListOrderedIcon, QuoteIcon, Redo2, StrikethroughIcon, UnderlineIcon, Undo2 } from 'lucide-react';
 import { mergeRegister, $getNearestNodeOfType } from '@lexical/utils';
 import { $wrapNodes } from '@lexical/selection';
+import dynamic from 'next/dynamic';
 
 
 // tailwind theme css for our Lexical markdown textarea
@@ -96,7 +97,7 @@ const MarkdownLexical = forwardRef<HTMLInputElement, MarkdownLexicalProps>(({ cl
     nodes: [ListNode, ListItemNode, QuoteNode, CodeNode, HeadingNode, LinkNode],
     editorState: () => (props.defaultMarkdownValue ? $convertFromMarkdownString(props.defaultMarkdownValue, TRANSFORMERS) : ''),
   };
-  
+
 
   // when editor changes, you can get notified via the LexicalOnChangePlugin
   const onChange = (editorState: EditorState, editor: LexicalEditor, tags: Set<string>) => {
@@ -361,8 +362,15 @@ const FocusPlugin = ({ focus, onFocus, onBlur }: { focus?: boolean; onFocus?: ()
   return null;
 }
 
+const  MarkdownLexicalNoSSR = (props: MarkdownLexicalProps) => {
+  const MarkdownLexicalNoSSR = dynamic(() => import('@/components/ui/markdown-lexical').then((mod) => mod.MarkdownLexical), { ssr: false });
+
+  return <Fragment>{MarkdownLexicalNoSSR && <MarkdownLexicalNoSSR {...props} />}</Fragment>;
+}
+
 export {
   MarkdownLexical,
+  MarkdownLexicalNoSSR,
   MarkdownLexicalToolbar,
   MarkdownLexicalFormatTextPlugin,
   MarkdownLexicalUndoRedoPlugin,
